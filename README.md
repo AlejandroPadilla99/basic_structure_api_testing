@@ -75,7 +75,7 @@ class Core:
     def delete(self, url: str, headers: dict) -> Response:
         return
 ```
-So, what is next?, well now we need to create functions to use the API's endpoints using
+So, what is next?, well now we need to create functions to use the API's endpoints using Core class
 ```python
 class UsersEndPoints:
     def __init__(self):
@@ -95,7 +95,7 @@ users = UsersEndpoints()
 def test_login():
     response = users.login_user()
 
-    //Now you can verify the response
+    #Now you can verify the response
     assert(response.status_code == 200)
 ```
 
@@ -105,7 +105,31 @@ Logging is important for API testing, if one test fails and we don't have any lo
 ```python
 @staticmethod
     def _print_logs(method: str, url: str, playload: str, headers: str, response: str) -> None:
-        return
+        #here you can handle the logs
+```
+Autentication (Bearer Token)
+--
+
+First, we need to create a header to send the token 
+
+```python
+class BaseHeader:
+    def __init__(self):
+        self.headers = {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': 'Bearer ' + token
+        }
+```
+Now we will use the header class 
+```python
+class UsersEndPoints(BaseHeader):
+    def __inint(self):
+        super().__init__()
+```
+
+```python
+self.request.post(url='url', playload=body, headers=self.headers)
 ```
 
 Test report
@@ -119,7 +143,7 @@ You can find more documentation [here](https://docs.qameta.io/allure-report/)
 
 Install allure on your proyect
 ```python
-pip install alllure-pytest
+pip install allure-pytest
 ```
 Usage 
 ```bash
@@ -132,35 +156,13 @@ allure serve /tmp/my_allure_results
 You can find more information [here](https://docs.qameta.io/allure/#_pytest)
 
 
-Autentication
---
-
-bear token 
-
-```python
-class BaseHeader:
-    def __init__(self):
-        self.headers = {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-            'bear':'exampletoken'
-        }
-```
-
-```python
-class UsersEndPoints(BaseHeader):
-    def __inint(self):
-        super().__init__()
-```
-
-```python
-self.request.post(url='url', playload=body, headers=self.headers)
-```
 
 Made with love <3 
 by Alejandro Padilla Flores
 ==
-[Linkednl](www)
-[Yotube](www.youtube)
+[Linkedin](https://www.linkedin.com/in/padillafloresalejandro/)
+
+[Yotube](https://www.youtube.com/@alejandropadilla3246)
+
 [Github](): you're on Github only check my account xD
 
